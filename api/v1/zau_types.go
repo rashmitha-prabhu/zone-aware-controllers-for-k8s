@@ -38,6 +38,11 @@ type ZoneAwareUpdateSpec struct {
 	// Max number (or %) of pods that can be updated at the same time.
 	MaxUnavailable *intstr.IntOrString `json:"maxUnavailable,omitempty"`
 
+	// Upper bound on number of pods that can be updated at the same time.
+	// Can be used in conjuction with MaxUnavailable (% pods)
+	// +optional
+	MaxUnavailableLimit *int `json:"maxUnavailableLimit,omitempty"`
+
 	// The exponential growth rate in float string. Default value is 2.0.
 	// It's possible to disable exponential updates by setting the ExponentialFactor to 0. In this case,
 	// the number of pods updated at each step is defined only by the MaxUnavailable param.

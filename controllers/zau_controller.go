@@ -333,6 +333,9 @@ func (r *ZoneAwareUpdateReconciler) deletePods(ctx context.Context,
 		r.Logger.Error(err, "Failed to compute maxUnavailable")
 		return err
 	}
+	if zau.Spec.MaxUnavailableLimit != nil {
+		maxUnavailable = min(maxUnavailable, *zau.Spec.MaxUnavailableLimit)
+	}
 
 	updateStep := zau.Status.UpdateStep
 

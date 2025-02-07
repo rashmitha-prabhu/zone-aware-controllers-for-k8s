@@ -58,6 +58,9 @@ spec:
                 description: Max number (or %) of pods that can be updated at the
                   same time.
                 x-kubernetes-int-or-string: true
+              maxUnavailableLimit:
+                type: integer
+                description: The upper limit on maxUnavailable pods in case of % pods chosen
               pauseRolloutAlarm:
                 description: CW alarm name used to pause/skip updates. Alarm should
                   be on the same account and region.
